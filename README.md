@@ -1,5 +1,7 @@
 # eslint-plugin-react-props
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/craigbilner/eslint-plugin-react-props.svg)](https://greenkeeper.io/)
+
 [![CircleCI](https://circleci.com/gh/craigbilner/eslint-plugin-react-props.svg?style=svg)](https://circleci.com/gh/craigbilner/eslint-plugin-react-props)
 [![npm Version](https://img.shields.io/npm/v/eslint-plugin-react-props.svg)](https://www.npmjs.com/package/eslint-plugin-react-props)
 
