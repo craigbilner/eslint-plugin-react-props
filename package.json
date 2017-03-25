@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react-props",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "a collection of prop type rules",
   "keywords": [
     "eslint",
