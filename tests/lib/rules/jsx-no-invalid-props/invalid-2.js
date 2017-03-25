@@ -1,9 +1,9 @@
-/* eslint import/no-extraneous-dependencies: "off", import/no-unresolved: "off" */
-/* eslint comma-dangle: "off", no-unused-vars: "off", object-curly-spacing: "off" */
-/* eslint import/extensions: "off", import/newline-after-import: "off" */
+/* eslint-disable import/no-unresolved, import/extensions */
 
-import React, {PropTypes} from 'react';
+import { PropTypes } from 'react';
+
 const TestComponent = {};
+
 TestComponent.propTypes = {
   a: PropTypes.array,
   b: PropTypes.bool,
@@ -34,5 +34,5 @@ TestComponent.propTypes = {
   aa: PropTypes.objectOf,
   ab: PropTypes.oneOf,
   ac: PropTypes.oneOfType,
-  ad: PropTypes.shape
+  ad: PropTypes.shape,
 };

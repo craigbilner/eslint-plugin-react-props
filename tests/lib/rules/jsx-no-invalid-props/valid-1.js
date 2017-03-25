@@ -1,8 +1,6 @@
-/* eslint import/no-extraneous-dependencies: "off", import/no-unresolved: "off", indent: "off" */
-/* eslint comma-dangle: "off", consistent-return: "off", prefer-arrow-callback: "off" */
-/* eslint func-names: "off", object-shorthand: "off", prefer-template: "off", max-len: "off" */
+/* eslint-disable import/no-unresolved, import/extensions */
 
-const React = require('react');
+import React from 'react';
 
 const MyComponent = {};
 const Message = {};
@@ -41,10 +39,10 @@ MyComponent.propTypes = {
 
   // An object that could be one of many types
   optionalUnion: React.PropTypes.oneOfType([
-                                             React.PropTypes.string,
-                                             React.PropTypes.number,
-                                             React.PropTypes.instanceOf(Message)
-                                           ]),
+    React.PropTypes.string,
+    React.PropTypes.number,
+    React.PropTypes.instanceOf(Message),
+  ]),
 
   // An array of a certain type
   optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),
@@ -54,9 +52,9 @@ MyComponent.propTypes = {
 
   // An object taking on a particular shape
   optionalObjectWithShape: React.PropTypes.shape({
-                                                   color: React.PropTypes.string,
-                                                   fontSize: React.PropTypes.number
-                                                 }),
+    color: React.PropTypes.string,
+    fontSize: React.PropTypes.number,
+  }),
 
   // You can chain any of the above with `isRequired` to make sure a warning
   // is shown if the prop isn't provided.
@@ -68,13 +66,14 @@ MyComponent.propTypes = {
   // You can also specify a custom validator. It should return an Error
   // object if the validation fails. Don't `console.warn` or throw, as this
   // won't work inside `oneOfType`.
-  customProp: function (props, propName, componentName) {
+  customProp(props, propName, componentName) {
+    let result;
     if (!/matchme/.test(props[propName])) {
-      return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
-      );
+      result =
+        new Error(`Invalid prop ${propName} supplied to ${componentName}. Validation failed.`);
     }
+
+    return result;
   },
 
   // You can also supply a custom validator to `arrayOf` and `objectOf`.
@@ -82,12 +81,17 @@ MyComponent.propTypes = {
   // will be called for each key in the array or object. The first two
   // arguments of the validator are the array or object itself, and the
   // current item's key.
-  customArrayProp: React.PropTypes.arrayOf(function (propValue, key, componentName, location, propFullName) {
+  customArrayProp: React.PropTypes.arrayOf((propValue,
+                                            key,
+                                            componentName,
+                                            location,
+                                            propName) => {
+    let result;
     if (!/matchme/.test(propValue[key])) {
-      return new Error(
-        'Invalid prop `' + propFullName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
-      );
+      result =
+        new Error(`Invalid prop ${propName} supplied to ${componentName}. Validation failed.`);
     }
-  })
+
+    return result;
+  }),
 };

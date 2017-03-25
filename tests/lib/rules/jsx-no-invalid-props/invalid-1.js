@@ -1,6 +1,6 @@
-/* eslint import/no-extraneous-dependencies: "off", import/no-unresolved: "off" */
+/* eslint-disable import/no-unresolved, import/extensions */
 
-const React = require('react');
+import React from 'react';
 
 const MyComponent = {};
 

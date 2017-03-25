@@ -1,6 +1,6 @@
-/* eslint import/no-extraneous-dependencies: "off", import/no-unresolved: "off" */
+/* eslint-disable import/no-unresolved, import/extensions */
 
-const React = require('react');
+import React from 'react';
 
 const MyComponent = {};
 const Message = {};
@@ -51,11 +51,14 @@ MyComponent.propTypes = {
     }
     return null;
   },
-  customObjectProp:
-    React.PropTypes.objectOf((propValue, key, componentName, location, propFullName) => {
-      if (!/matchme/.test(propValue[key])) {
-        return new Error(`error ${propFullName}`);
-      }
-      return null;
-    }),
+  customObjectProp: React.PropTypes.objectOf((propValue,
+                                              key,
+                                              componentName,
+                                              location,
+                                              propFullName) => {
+    if (!/matchme/.test(propValue[key])) {
+      return new Error(`error ${propFullName}`);
+    }
+    return null;
+  }),
 };
